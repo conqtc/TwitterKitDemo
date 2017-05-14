@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jUk-wE-ztm">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--TwitterKit Demo-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TwitterKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cEw-T3-Jh6">
+                                <rect key="frame" x="0.0" y="32" width="375" height="603"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="cEw-T3-Jh6" secondAttribute="trailing" id="GSd-03-S2n"/>
+                            <constraint firstItem="cEw-T3-Jh6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Oag-s5-UEt"/>
+                            <constraint firstItem="cEw-T3-Jh6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="REC-ez-jXN"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cEw-T3-Jh6" secondAttribute="bottom" id="v07-U2-dof"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="TwitterKit Demo" id="vuh-wL-Cvq">
+                        <barButtonItem key="backBarButtonItem" title=" " id="2co-rD-rFf"/>
+                        <barButtonItem key="leftBarButtonItem" image="GPS" id="dxy-3x-7o2">
+                            <connections>
+                                <action selector="locateCurrentLocation:" destination="BYZ-38-t0r" id="uPJ-hI-ef5"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="9wC-o6-xmZ">
+                            <connections>
+                                <action selector="search:" destination="BYZ-38-t0r" id="Mxo-Jt-Tay"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="cEw-T3-Jh6" id="4KP-W0-t0X"/>
+                        <segue destination="1vO-Xk-Srr" kind="show" identifier="displayTweets" id="SBs-KM-ZUW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="WPX-WL-fyQ">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="mYK-by-6Bv"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="Zr7-G7-aqx"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="W1X-xi-Ly7"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="63C-UD-p6j"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="Tkb-oY-Bjn">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="nF0-Kc-kYV"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="LVe-Lc-jCr"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="B43-6n-Q8l"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="Qtl-lo-5L4"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="Osf-vX-r5d">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="zHb-9V-LMp"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="Nae-UT-Yle"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="feU-MU-inh"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="Iw4-CG-gER"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1056.8" y="123.68815592203899"/>
+        </scene>
+        <!--Search Tweets View Controller-->
+        <scene sceneID="tn5-Af-1Zb">
+            <objects>
+                <tableViewController id="1vO-Xk-Srr" customClass="SearchTweetsViewController" customModule="TwitterKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="sxV-WX-LEJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="1vO-Xk-Srr" id="Vcb-dE-9kq"/>
+                            <outlet property="delegate" destination="1vO-Xk-Srr" id="ElU-Sc-HPf"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t6L-BH-X2n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1854" y="117"/>
+        </scene>
+        <!--Location Search Controller-->
+        <scene sceneID="gu8-5s-J3R">
+            <objects>
+                <tableViewController storyboardIdentifier="LocationSearchController" id="Ak0-2m-f7r" customClass="LocationSearchController" customModule="TwitterKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="EmY-Pb-4Vo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" textLabel="fZq-nD-giE" detailTextLabel="xBx-Sy-Lga" style="IBUITableViewCellStyleSubtitle" id="NmU-bv-uxD">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NmU-bv-uxD" id="NX7-eg-JrJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fZq-nD-giE">
+                                            <rect key="frame" x="15" y="4" width="37.5" height="21.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xBx-Sy-Lga">
+                                            <rect key="frame" x="15" y="25.5" width="43" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ak0-2m-f7r" id="eOW-jK-X02"/>
+                            <outlet property="delegate" destination="Ak0-2m-f7r" id="jDc-bv-hvk"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yb9-Gb-nfh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2706" y="116"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ysi-0t-gUb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jUk-wE-ztm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8f5-ID-xEa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="KUm-FR-nBR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kZ4-IJ-L0R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116" y="777.66116941529242"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="GPS" width="32" height="32"/>
+    </resources>
+</document>
